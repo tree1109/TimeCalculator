@@ -32,21 +32,49 @@ pub struct Config {
 impl Config {
     pub fn new(args: &[String]) -> Result<Config, &'static str> {
         match args.len() {
-            1 => {
-                println!("請指定要讀取的文字檔案，可將檔案拖曳到視窗\n檔案路徑:");
-                // get input string from user
-                let mut buf = String::new();
-                match std::io::stdin().read_line(&mut buf) {
-                    Ok(_) => Ok(Config {
-                        file_path: buf.trim().to_string(),
-                    }),
-                    Err(_) => Err("讀取輸入錯誤"),
-                }
-            }
+            1 => Ok(Config {
+                file_path: String::from("time_log.txt"),
+            }),
             2 => Ok(Config {
                 file_path: args[1].clone(),
             }),
             _ => Err("只能指定一個檔案路徑喔"),
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_run() {
+        let config = Config {
+            file_path: String::from("time.txt"),
+        };
+
+        assert_eq!(run(config).is_ok(), true);
+    }
+
+    #[test]
+    fn test_config_new() {
+        let args = vec![String::from("summary_time_calculator")];
+        assert!(Config::new(&args).is_ok());
+
+        let args = vec![
+            String::from("summary_time_calculator"),
+            String::from("test_time_log.txt"),
+        ];
+        assert!(Config::new(&args).is_ok());
+
+        let args = vec![
+            String::from("summary_time_calculator"),
+            String::from("test_time_log.txt"),
+            String::from("test_time_log.txt"),
+        ];
+        assert!(Config::new(&args).is_err());
+
+        let args = vec![];
+        assert!(Config::new(&args).is_err());
     }
 }
