@@ -9,6 +9,11 @@ fn main() {
         process::exit(1);
     });
 
+    // Run the program
+    run(config);
+}
+
+fn run(config: Config) {
     // Read the file
     let time_log = fs::read_to_string(config.file_path).unwrap_or_else(|err| {
         println!("讀取檔案時發生錯誤: {}", err);
