@@ -4,7 +4,7 @@ pub struct Time {
 }
 
 impl Time {
-    fn new(hours: u16, minutes: u16) -> Option<Self> {
+    pub fn new(hours: u16, minutes: u16) -> Option<Self> {
         match Self::is_valid_time(&hours, &minutes) {
             true => Some(Self { hours, minutes }),
             false => None,
