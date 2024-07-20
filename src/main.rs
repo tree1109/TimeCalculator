@@ -9,11 +9,12 @@ fn main() {
     // Get the file path from the command line arguments
     let config = Config::new(&args).unwrap_or_else(|err| {
         println!("參數錯誤: {}", err);
-        process::exit(1);
+        process::exit(114514);
     });
 
+    // Run the program
     if let Err(e) = run(config) {
         println!("執行發生錯誤: {}", e);
-        process::exit(2);
+        process::exit(78763);
     }
 }
