@@ -13,7 +13,14 @@ pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
     // Read the file
     let contents = fs::read_to_string(config.file_path)?;
 
-    println!("檔案內容:\n{}", contents);
+    let time_intervals = time_parser::get_time_interval_from_lines(contents.lines().collect());
+    let time_log = TimeLog::new(time_intervals);
+
+    let total_time = time_log.get_total_time_string();
+    let time_log_string = time_log.get_time_log_strings();
+
+    println!("總共時間:\n{}", total_time);
+    println!("時間紀錄:\n{}", time_log_string);
 
     Ok(())
 }
