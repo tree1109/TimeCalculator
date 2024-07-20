@@ -27,8 +27,7 @@ impl Config {
             }
             2 => args[1].clone(),
             _ => {
-                println!("只能指定一個檔案路徑喔!");
-                String::new()
+                panic!("只能指定一個檔案路徑喔!");
             }
         };
         Config { file_path }
