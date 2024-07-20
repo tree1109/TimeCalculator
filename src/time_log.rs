@@ -1,4 +1,4 @@
-use super::time_interval::TimeInterval;
+use crate::TimeInterval;
 
 pub struct TimeLog {
     time_intervals: Vec<TimeInterval>,
@@ -34,8 +34,8 @@ impl TimeLog {
 
 #[cfg(test)]
 mod tests {
-    use super::super::time::Time;
     use super::*;
+    use crate::Time;
 
     fn get_time_intervals() -> Vec<TimeInterval> {
         vec![
