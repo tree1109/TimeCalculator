@@ -38,7 +38,7 @@ impl Config {
         match args.len() {
             // If there is no file path, use the default file path
             1 => Ok(Config {
-                file_path: String::from("time_log.txt"),
+                file_path: String::from("time.txt"),
             }),
             // If there is a file path, use the file path from the command line arguments
             2 => Ok(Config {
