@@ -1,4 +1,4 @@
-use crate::Time;
+use super::Time;
 
 pub struct TimeInterval {
     start_time: Time,

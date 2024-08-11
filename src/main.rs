@@ -1,6 +1,6 @@
 use std::{env, process};
 
-use summary_time_calculator::{run, Config};
+use summary_time_calculator::time_lib::{run, Config};
 
 fn main() {
     // Get the command line arguments

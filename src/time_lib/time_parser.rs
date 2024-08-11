@@ -1,5 +1,5 @@
-use crate::Time;
-use crate::TimeInterval;
+use super::Time;
+use super::TimeInterval;
 use regex::Regex;
 
 pub fn get_time_from_string(time: &str) -> Time {
@@ -27,9 +27,9 @@ pub fn get_time_interval_from_lines(lines: Vec<&str>) -> Vec<TimeInterval> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::Time;
-    use crate::TimeInterval;
-    use crate::TimeLog;
+    use super::super::Time;
+    use super::super::TimeInterval;
+    use super::super::TimeLog;
 
     #[test]
     fn test_get_time_from_string() {
